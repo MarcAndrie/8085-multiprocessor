@@ -1,72 +1,92 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="2.7.1" version="1.0">
-  <lib desc="#Wiring" name="0"/>
-  <lib desc="#Gates" name="1"/>
-  <lib desc="#Arithmetic" name="2"/>
-  <lib desc="#Memory" name="3"/>
-  <lib desc="#I/O" name="4"/>
-  <lib desc="#Base" name="5"/>
-  <main name="main"/>
-  <options>
-    <a name="gateUndefined" val="ignore"/>
-    <a name="simlimit" val="1000"/>
-    <a name="simrand" val="0"/>
-  </options>
-  <circuit name="main">
-    <a name="circuit" val="main"/>
-    <a name="clabel" val=""/>
-    <a name="clabelup" val="east"/>
-    <a name="clabelfont" val="SansSerif plain 12"/>
-
-    <!-- Accumulator -->
-    <comp lib="1" loc="(50,50)" name="D Flip-Flop">
-      <a name="label" val="Accumulator"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1.0">
+  <circuit name="Main">
+    
+    <!-- 8-bit Accumulator -->
+    <comp lib="0" loc="100 100" name="Register">
+      <a name="width" val="8"/>
+      <a name="tristate" val="false"/>
     </comp>
-
-    <!-- General Purpose Registers -->
-    <comp lib="1" loc="(50,100)" name="D Flip-Flop">
+    
+    <!-- General Purpose Registers (B, C, D, E, H, L) -->
+    <comp lib="0" loc="100 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="B"/>
     </comp>
-    <comp lib="1" loc="(50,150)" name="D Flip-Flop">
+    <comp lib="0" loc="200 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="C"/>
     </comp>
-    <comp lib="1" loc="(50,200)" name="D Flip-Flop">
+    <comp lib="0" loc="300 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="D"/>
     </comp>
-    <comp lib="1" loc="(50,250)" name="D Flip-Flop">
+    <comp lib="0" loc="400 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="E"/>
     </comp>
-    <comp lib="1" loc="(50,300)" name="D Flip-Flop">
+    <comp lib="0" loc="500 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="H"/>
     </comp>
-    <comp lib="1" loc="(50,350)" name="D Flip-Flop">
+    <comp lib="0" loc="600 200" name="Register">
+      <a name="width" val="8"/>
       <a name="label" val="L"/>
     </comp>
-
-    <!-- Stack Pointer -->
-    <comp lib="1" loc="200,200" name="D Flip-Flop">
-      <a name="label" val="SP"/>
+    
+    <!-- 16-bit Stack Pointer -->
+    <comp lib="0" loc="100 400" name="Register">
+      <a name="width" val="16"/>
+      <a name="label" val="Stack Pointer"/>
     </comp>
-
-    <!-- Program Counter -->
-    <comp lib="1" loc="200,100" name="D Flip-Flop">
-      <a name="label" val="PC"/>
+    
+    <!-- 16-bit Program Counter -->
+    <comp lib="0" loc="300 400" name="Register">
+      <a name="width" val="16"/>
+      <a name="label" val="Program Counter"/>
     </comp>
-
+    
     <!-- Flags Register -->
-    <comp lib="1" loc="350,50" name="D Flip-Flop">
+    <comp lib="0" loc="100 600" name="Register">
+      <a name="width" val="5"/>
       <a name="label" val="Flags"/>
     </comp>
-
-    <!-- Example Connections -->
-    <wire from="(100,50)" to="(200,50)"/>
-    <wire from="(100,100)" to="(200,100)"/>
-    <wire from="(100,150)" to="(200,150)"/>
-    <wire from="(100,200)" to="(200,200)"/>
-    <wire from="(100,250)" to="(200,250)"/>
-    <wire from="(100,300)" to="(200,300)"/>
-    <wire from="(100,350)" to="(200,350)"/>
+    <comp lib="1" loc="150 650" name="AND Gate"/>
+    <comp lib="1" loc="200 650" name="OR Gate"/>
+    <comp lib="1" loc="250 650" name="XOR Gate"/>
+    <comp lib="1" loc="300 650" name="NOT Gate"/>
     
-    <!-- Add any additional logic for flags here -->
+    <!-- Zero Flag Logic -->
+    <comp lib="1" loc="400 600" name="Comparator (digital)">
+      <a name="width" val="8"/>
+      <a name="eq" val="true"/>
+    </comp>
+    <wire from="(200,600)" to="(400,600)"/>
+    
+    <!-- Sign Flag Logic -->
+    <comp lib="0" loc="450 600" name="Splitter">
+      <a name="bitWidth" val="8"/>
+      <a name="fanout" val="2"/>
+      <a name="start" val="7"/>
+      <a name="end" val="7"/>
+    </comp>
+    
+    <!-- Carry Flag Logic -->
+    <comp lib="1" loc="500 600" name="Adder">
+      <a name="width" val="8"/>
+      <a name="carryIn" val="true"/>
+    </comp>
+    
+    <!-- Parity Flag Logic -->
+    <comp lib="1" loc="550 600" name="Parity Checker"/>
+    
+    <!-- Auxiliary Carry Logic -->
+    <comp lib="0" loc="600 600" name="Splitter">
+      <a name="bitWidth" val="8"/>
+      <a name="fanout" val="2"/>
+      <a name="start" val="3"/>
+      <a name="end" val="3"/>
+    </comp>
+    
   </circuit>
 </project>
