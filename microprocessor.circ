@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project source="2.7.1" version="1.0">
 This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+  <lib desc="0" name="Base" />
   <circuit name="main">
-    <!-- ALU Output (8-bit) -->
-    <comp lib="0" loc="150 100" name="Constant">
+    <comp loc="160 100" name="Constant">
       <a name="value" val="0x00"/>
       <a name="width" val="8"/>
     </comp>
-    
-    <!-- Zero Flag -->
-    <comp lib="0" loc="300 100" name="OR Gate">
+
+    <!-- Zero Flag Logic -->
+    <comp loc="280 100" name="OR Gate">
       <a name="size" val="8"/>
     </comp>
-    <comp lib="0" loc="400 100" name="NOT Gate"/>
+    <comp loc="400 100" name="NOT Gate"/>
 
     <!-- Carry Flag -->
-    <comp lib="0" loc="150 200" name="Constant">
+    <comp loc="160 200" name="Constant">
       <a name="value" val="0x00"/>
       <a name="width" val="1"/>
     </comp>
 
-    <!-- Output Zero Flag -->
-    <comp lib="0" loc="500 100" name="LED">
+    <!-- Output Zero Flag (LED) -->
+    <comp loc="520 100" name="LED">
       <a name="facing" val="east"/>
     </comp>
 
-    <!-- Output Carry Flag -->
-    <comp lib="0" loc="400 200" name="LED">
+    <!-- Output Carry Flag (LED) -->
+    <comp loc="400 200" name="LED">
       <a name="facing" val="east"/>
     </comp>
 
-    <!-- Wires -->
-    <wire from="160 100" to="300 100"/>
-    <wire from="310 100" to="400 100"/>
-    <wire from="410 100" to="500 100"/>
-    <wire from="160 200" to="400 200"/>
+    <!-- Wires for Zero Flag -->
+    <wire from="180 100" to="280 100"/>
+    <wire from="300 100" to="400 100"/>
+    <wire from="420 100" to="520 100"/>
+
+    <!-- Wire for Carry Flag -->
+    <wire from="180 200" to="400 200"/>
   </circuit>
 </project>
