@@ -88,45 +88,21 @@
     </comp>
     
     <!-- Auxiliary Carry Flag -->
-    <comp lib="4 " loc="(340,420)" name="D Flip-Flop">
+    <comp lib="4" loc="(340,420)" name="D Flip-Flop">
       <a name="label" val="Auxiliary Carry Flag"/>
     </comp>
     <comp lib="0" loc="(250,420)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="Auxiliary Carry"/>
+      <a name="label" val="Aux Carry"/>
     </comp>
     
-    <!-- ALU Output -->
-    <comp lib="0" loc="(150,210)" name="Pin">
+    <!-- Parity Flag -->
+    <comp lib="4" loc="(340,490)" name="D Flip-Flop">
+      <a name="label" val="Parity Flag"/>
+    </comp>
+    <comp lib="0" loc="(250,490)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="ALU Output"/>
+      <a name="label" val="Parity"/>
     </comp>
-    
-    <!-- Logic for setting/resetting flags -->
-    <comp lib="1" loc="(290,210)" name="AND Gate">
-      <a name="label" val="Zero Flag Logic"/>
-    </comp>
-    <comp lib="1" loc="(290,280)" name="AND Gate">
-      <a name="label" val="Sign Flag Logic"/>
-    </comp>
-    <comp lib="1" loc="(290,350)" name="OR Gate">
-      <a name="label" val="Carry Flag Logic"/>
-    </comp>
-    <comp lib="1" loc="(290,420)" name="OR Gate">
-      <a name="label" val="Auxiliary Carry Flag Logic"/>
-    </comp>
-    
-    <!-- Connections -->
-    <wire from="(150,210)" to="(290,210)"/>
-    <wire from="(290,210)" to="(340,210)"/>
-    <wire from="(150,210)" to="(290,280)"/>
-    <wire from="(290,280)" to="(340,280)"/>
-    <wire from="(150,210)" to="(290,350)"/>
-    <wire from="(290,350)" to="(340,350)"/>
-    <wire from="(150,210)" to="(290,420)"/>
-    <wire from="(290,420)" to="(340,420)"/>
-  </circuit>
-</project>
-    <wire from="180 200" to="400 200"/>
   </circuit>
 </project>
