@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+<circuit name="Flags Register">
+  <a name="circuit" val="Flags Register"/>
+  <a name="clabel" val=""/>
+  <a name="clabelup" val="east"/>
+  <a name="clabelfont" val="SansSerif plain 12"/>
+  
+  <!-- Zero Flag -->
+  <comp lib="4" loc="(340,210)" name="D Flip-Flop">
+    <a name="label" val="Zero Flag"/>
+  </comp>
+  <comp lib="0" loc="(250,210)" name="Pin">
+    <a name="tristate" val="false"/>
+    <a name="label" val="Zero"/>
+  </comp>
+  
+  <!-- Sign Flag -->
+  <comp lib="4" loc="(340,280)" name="D Flip-Flop">
+    <a name="label" val="Sign Flag"/>
+  </comp>
+  <comp lib="0" loc="(250,280)" name="Pin">
+    <a name="tristate" val="false"/>
+    <a name="label" val="Sign"/>
+  </comp>
+  
+  <!-- Carry Flag -->
+  <comp lib="4" loc="(340,350)" name="D Flip-Flop">
+    <a name="label" val="Carry Flag"/>
+  </comp>
+  <comp lib="0" loc="(250,350)" name="Pin">
+    <a name="tristate" val="false"/>
+    <a name="label" val="Carry"/>
+  </comp>
+  
+  <!-- Auxiliary Carry Flag -->
+  <comp lib="4" loc="(340,420)" name="D Flip-Flop">
+    <a name="label" val="Auxiliary Carry Flag"/>
+  </comp>
+  <comp lib="0" loc="(250,420)" name="Pin">
+    <a name="tristate" val="false"/>
+    <a name="label" val="Auxiliary Carry"/>
+  </comp>
+  
+  <!-- ALU Output -->
+  <comp lib="0" loc="(150,210)" name="Pin">
+    <a name="tristate" val="false"/>
+    <a name="label" val="ALU Output"/>
+  </comp>
+  
+  <!-- Logic for setting/resetting flags -->
+  <comp lib="1" loc="(290,210)" name="AND Gate">
+    <a name="label" val="Zero Flag Logic"/>
+  </comp>
+  <comp lib="1" loc="(290,280)" name="AND Gate">
+    <a name="label" val="Sign Flag Logic"/>
+  </comp>
+  <comp lib="1" loc="(290,350)" name="OR Gate">
+    <a name="label" val="Carry Flag Logic"/>
+  </comp>
+  <comp lib="1" loc="(290,420)" name="OR Gate">
+    <a name="label" val="Auxiliary Carry Flag Logic"/>
+  </comp>
+  
+  <!-- Connections -->
+  <wire from="(150,210)" to="(290,210)"/>
+  <wire from="(290,210)" to="(340,210)"/>
+  <wire from="(150,210)" to="(290,280)"/>
+  <wire from="(290,280)" to="(340,280)"/>
+  <wire from="(150,210)" to="(290,350)"/>
+  <wire from="(290,350)" to="(340,350)"/>
+  <wire from="(150,210)" to="(290,420)"/>
+  <wire from="(290,420)" to="(340,420)"/>
+</circuit>
+    <!-- Wiring for Carry Flag -->
+    <wire from="180 200" to="400 200"/>
+  </circuit>
+</project>
